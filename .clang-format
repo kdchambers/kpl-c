@@ -1,0 +1,43 @@
+---
+BasedOnStyle: 'WebKit'
+AlignAfterOpenBracket: Align
+AlignArrayOfStructures: Left
+AlignConsecutiveAssignments: None
+AlignConsecutiveMacros: AcrossEmptyLines
+AlignEscapedNewlines: Left
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseExpressionOnASingleLine: true
+AllowShortEnumsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+BreakAfterAttributes: Always
+BreakAfterReturnType: All
+BreakBeforeBraces: Allman
+ColumnLimit: 120
+IncludeBlocks: Preserve
+IndentWidth: 4
+InsertNewlineAtEOF: true
+Language: Cpp
+LineEnding: LF
+MaxEmptyLinesToKeep: 1
+PPIndentWidth: 2
+PointerAlignment: Left
+QualifierAlignment: Leave
+SpaceAfterCStyleCast: true
+SpaceAfterLogicalNot: false
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: Custom
+SpaceBeforeParensOptions:
+  AfterControlStatements: true
+  AfterFunctionDeclarationName: false
+  AfterFunctionDefinitionName: false
+SpaceBeforeSquareBrackets: false
+SpacesInParens: Never
+SpacesInSquareBrackets: false
+TabWidth: 4
+UseTab: Never
+
+...
