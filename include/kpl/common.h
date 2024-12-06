@@ -27,16 +27,3 @@ typedef int_fast32_t if32;
 #define ns_per_ms  1000000
 
 #define KPL_OK     0
-
-//
-// TODO:
-//
-#include <assert.h>
-void kpl_assert(bool condition)
-{
-    assert(condition);
-}
-
-const int kpl_block_size = 8;
-
-// int run_server_( struct run_server_options opts )
