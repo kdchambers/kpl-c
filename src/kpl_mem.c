@@ -19,3 +19,17 @@ void kpl_memset_u32(u32* data, u32 value, u32 count)
         data++;
     }
 }
+
+void kpl_mem_copy_char(char* dst, const char* src, i32 count)
+{
+    //
+    // TODO: Make faster with u64 or SIMD
+    //
+    for (i32 i = 0; i < count; i++)
+    {
+        (*dst) = (*src);
+        dst++;
+        src++;
+    }
+}
+
