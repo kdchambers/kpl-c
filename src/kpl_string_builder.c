@@ -2,16 +2,16 @@
 #include "kpl/string.h"
 #include "kpl/mem.h"
 
-typedef struct 
+struct kpl_string_builder
 {
     char* ptr;
     i32 used;
     i32 capacity;
-} KplStringBuilder;
+};
 
 #define KPL_STRING_BUILDER_ERROR_OUT_OF_SPACE 1
 
-i32 kpl_string_builder_append_string(KplStringBuilder* builder, KplString string)
+i32 kpl_string_builder_append_string(struct kpl_string_builder* builder, struct kpl_string string)
 {
     const i32 free_space = builder->capacity - builder->used;
 
@@ -54,7 +54,7 @@ i32 kpl_u32_to_string(u32 number, char* buffer, i32 buffer_size)
     return digit_count;
 }
 
-void kpl_string_builder_append_u32(KplStringBuilder* builder, u32 number)
+void kpl_string_builder_append_u32(struct kpl_string_builder* builder, u32 number)
 {
     char* dst_ptr = builder->ptr + builder->used;
     const i32 dst_size = builder->capacity - builder->used;

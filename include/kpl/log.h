@@ -1,28 +1,28 @@
+// clang-format Language: C
 #pragma once
 
 #include "kpl/common.h"
-#include "kpl/string.h"
 
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 
-static int kpl_string_from_i64(i64 value, char* buffer, int buffer_capacity);
+static int kpl_string_from_i64(i64 value, char *buffer, int buffer_capacity);
 
-typedef struct KplTextBuffer
+struct kpl_texture_buffer
 {
-    char* data;
+    char *data;
     i32 count;
     i32 capacity;
-} KplTextBuffer;
+};
 
-KplTextBuffer kpl_text_buffer_init(char* buffer, i32 buffer_size)
+struct kpl_texture_buffer kpl_text_buffer_init(char *buffer, i32 buffer_size)
 {
-    const KplTextBuffer result = { .data = buffer, .count = 0, .capacity = buffer_size };
+    const struct kpl_texture_buffer result = {.data = buffer, .count = 0, .capacity = buffer_size};
     return result;
 }
 
-void kpl_text_buffer_add_string(KplTextBuffer text_buffer, KplString string)
+void kpl_text_buffer_add_string(struct kpl_texture_buffer text_buffer, KplString string)
 {
     //
     // Make sure we have enough space to write the string
@@ -38,7 +38,7 @@ void kpl_text_buffer_add_string(KplTextBuffer text_buffer, KplString string)
     text_buffer.count += string.len;
 }
 
-void kpl_text_buffer_add_nl(KplTextBuffer* text_buffer)
+void kpl_text_buffer_add_nl(struct kpl_texture_buffer *text_buffer)
 {
     const int i = text_buffer->count;
     text_buffer->data[i + 0] = '\n';
@@ -52,32 +52,32 @@ void kpl_log(int fd, KplString string)
     UNUSED(bytes_written_count);
 }
 
-void kpl_log_cstring(int fd, const char* string)
+void kpl_log_cstring(int fd, const char *string)
 {
     const size_t string_len = strlen(string);
     const ssize_t bytes_written_count = write(fd, string, string_len);
     UNUSED(bytes_written_count);
 }
 
-int kpl_text_buffer_free_char_count(KplTextBuffer text_buffer)
+int kpl_text_buffer_free_char_count(struct kpl_texture_buffer text_buffer)
 {
     return (text_buffer.capacity - text_buffer.count) - 1;
 }
 
-KplTextBuffer kpl_text_buffer_reset(KplTextBuffer text_buffer)
+struct kpl_texture_buffer kpl_text_buffer_reset(struct kpl_texture_buffer text_buffer)
 {
-    const KplTextBuffer result = { .data = text_buffer.data, .capacity = text_buffer.capacity, .count = 0 };
+    const struct kpl_texture_buffer result = {.data = text_buffer.data, .capacity = text_buffer.capacity, .count = 0};
     return result;
 }
 
-void kpl_text_buffer_add_i64(KplTextBuffer* text_buffer, i64 value)
+void kpl_text_buffer_add_i64(struct kpl_texture_buffer *text_buffer, i64 value)
 {
     int chars_written_count = kpl_string_from_i64(value, &text_buffer->data[text_buffer->count], 64);
     assert(chars_written_count > 0);
     text_buffer->count += chars_written_count;
 }
 
-static int kpl_string_from_i64(i64 value, char* buffer, int buffer_capacity)
+static int kpl_string_from_i64(i64 value, char *buffer, int buffer_capacity)
 {
     UNUSED(buffer_capacity); // TODO:
 

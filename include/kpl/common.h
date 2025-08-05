@@ -1,3 +1,4 @@
+// clang-format Language: C
 #pragma once
 
 #if __STDC_VERSION__ >= 199901L

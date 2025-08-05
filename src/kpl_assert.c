@@ -5,10 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void kpl_assert_impl(const char* condition_string, const char* message, const char* file_string, int line_number)
+void kpl_assert_impl(const char *condition_string, const char *message, const char *file_string, int line_number)
 {
-    fprintf(stderr, "ASSERT FAILED: Condition (%s) Message: (%s), File %s:%d. Terminating process.\n", condition_string,
-            message, file_string, line_number);
+    fprintf(stderr, "ASSERT FAILED: Condition (%s) Message: (%s), File %s:%d. Terminating process.\n", condition_string, message, file_string, line_number);
     exit(EXIT_FAILURE);
 }
 
@@ -16,10 +15,9 @@ void kpl_assert_impl(const char* condition_string, const char* message, const ch
 
 #include <stdio.h>
 
-void kpl_assert_impl(const char* condition_string, const char* message, const char* file_string, int line_number)
+void kpl_assert_impl(const char *condition_string, const char *message, const char *file_string, int line_number)
 {
-    fprintf(stderr, "ASSERT FAILED: Condition (%s) Message: (%s), File %s:%d. Terminating process.\n", condition_string,
-            message, file_string, line_number);
+    fprintf(stderr, "ASSERT FAILED: Condition (%s) Message: (%s), File %s:%d. Terminating process.\n", condition_string, message, file_string, line_number);
 }
 
 #elif KPL_ASSERT_BEHAVIOUR == KPL_ASSERT_BEHAVIOUR_IGNORE

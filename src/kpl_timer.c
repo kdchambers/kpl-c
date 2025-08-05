@@ -12,12 +12,12 @@ i64 kpl_nano_timestamp(clockid_t clock_id)
     return start_time.tv_nsec + (start_time.tv_sec * ns_per_sec);
 }
 
-KplTimer kpl_cpu_timer_start(void)
+i64 kpl_cpu_timer_start(void)
 {
     return kpl_nano_timestamp(CLOCK_MONOTONIC);
 }
 
-i64 kpl_cpu_timer_ns_since(KplTimer timer)
+i64 kpl_cpu_timer_ns_since(i64 timer)
 {
     const i64 current_ts_ns = kpl_nano_timestamp(CLOCK_MONOTONIC);
     return current_ts_ns - timer;

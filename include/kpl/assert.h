@@ -1,3 +1,4 @@
+// clang-format Language: C
 #pragma once
 
 //
@@ -9,26 +10,20 @@
 
 #define KPL_ASSERT_BEHAVIOUR        KPL_ASSERT_BEHAVIOUR_PANIC
 
-#if KPL_ASSERT_BEHAVIOUR == KPL_ASSERT_BEHAVIOUR_PANIC
+#if KPL_ASSERT_BEHAVIOUR == KPL_ASSERT_BEHAVIOUR_PANIC || KPL_ASSERT_BEHAVIOUR == KPL_ASSERT_BEHAVIOUR_LOG
 
-void kpl_assert_impl(const char* condition_string, const char* message, const char* file_string,
-                     int line_number);
+void kpl_assert_impl(const char *condition_string, const char *message, const char *file_string, int line_number);
 
-#define kpl_assert(condition, message)                            \
-    if ((condition) == false)                                               \
+#define kpl_assert_message(condition, message)                    \
+    if ((condition) == false)                                     \
     {                                                             \
         kpl_assert_impl(#condition, message, __FILE__, __LINE__); \
     }
 
-#elif KPL_ASSERT_BEHAVIOUR == KPL_ASSERT_BEHAVIOUR_LOG
-
-void kpl_assert_impl(const char* condition_string, const char* message, const char* file_string,
-                     int line_number);
-
-#define kpl_assert(condition, message)                           \
-    if (!condition)                                              \
-    {                                                            \
-        kpl_assert_impl(#condition, message, __LINE__, __FILE__); \
+#define kpl_assert(condition)                                \
+    if ((condition) == false)                                \
+    {                                                        \
+        kpl_assert_impl(#condition, "", __FILE__, __LINE__); \
     }
 
 #elif KPL_ASSERT_BEHAVIOUR == KPL_ASSERT_BEHAVIOUR_IGNORE
