@@ -14,21 +14,24 @@ AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLoopsOnASingleLine: false
 BreakAfterAttributes: Always
-BreakAfterReturnType: All
+BreakAfterReturnType: None
 BreakBeforeBraces: Allman
-ColumnLimit: 120
+ColumnLimit: 160
+Cpp11BracedListStyle: true
 IncludeBlocks: Preserve
+NamespaceIndentation: All
 IndentWidth: 4
 InsertNewlineAtEOF: true
-Language: Cpp
+Language: C
 LineEnding: LF
 MaxEmptyLinesToKeep: 1
 PPIndentWidth: 2
-PointerAlignment: Left
+PointerAlignment: Right
 QualifierAlignment: Leave
 SpaceAfterCStyleCast: true
 SpaceAfterLogicalNot: false
 SpaceBeforeAssignmentOperators: true
+SpaceBeforeCpp11BracedList: false
 SpaceBeforeParens: Custom
 SpaceBeforeParensOptions:
   AfterControlStatements: true
@@ -40,4 +43,3 @@ SpacesInSquareBrackets: false
 TabWidth: 4
 UseTab: Never
 
-...
